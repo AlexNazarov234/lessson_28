@@ -4,9 +4,20 @@
 	<%= @row['content'] %>
 	<br />
 	<br />
-	<%= @row['created_date'] %>
+	<%= @row['writername'] + ': ' + @row['created_date'] %>
 </p>
 <br />
+
+<% @comments.each do |comment| %>
+	<p>
+		<%= comment['content'] %>
+		<br />
+		<%= comment['created_date'] %>
+		<br />
+	</p>
+	<hr />
+<% end %>
+
 <h4>Comments</h4>
 <p>
 	<form action="/details/<%= @row['id'] %>" method="POST" role="form">

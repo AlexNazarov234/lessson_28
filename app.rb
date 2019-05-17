@@ -45,13 +45,19 @@ end
 
 post '/new' do
   content = params[:content]
+  writername = params[:writername]
+
+  if writername.length <= 0 
+  	@error = 'Введите имя блоггера'
+  	return erb :new
+  end
 
   if content.length <= 0 
   	@error = 'Введите текст'
   	return erb :new
   end
 
-  @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content] 
+  @db.execute 'insert into Posts (content, created_date, writername) values (?, datetime(), ?)', [content, writername] 
 
   redirect to '/'
 end

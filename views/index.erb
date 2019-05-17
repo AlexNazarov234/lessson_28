@@ -4,7 +4,7 @@
 	<p>
 		<%= post['content'] %>
 		<br />
-		<%= post['created_date'] %>
+		<%= post['writername'] + ': ' + post['created_date'] %>
 		<br />
 		<a href="/details/<%= post['id'] %>">Comments</a>
 	</p>
